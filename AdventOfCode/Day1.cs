@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdventOfCode.Extensions;
 
 namespace AdventOfCode
 {
@@ -39,9 +40,31 @@ namespace AdventOfCode
             return sum.ToString(CultureInfo.InvariantCulture);
         }
 
+        public string GetCaptchaHalfwayAroundSolution()
+        {
+            var sum = 0.0;
+            var index = 0;
+            var reader = Captcha.ToCharArray();
+            var jumpIndex = reader.Length / 2;
+
+            while (reader.Length > index)
+            {
+                var digit = reader[index];
+
+                var halfwayAround = reader.GetElementHalfWayAround(index, jumpIndex);
+
+                if(digit.Equals(halfwayAround))
+                    sum += Char.GetNumericValue(digit);
+
+                index++;
+            }
+
+            return sum.ToString(CultureInfo.InvariantCulture);
+        }
+
         public override string ToString()
         {
-            return $"Day 1 of Christmas: {GetCaptchaSolution()}";
+            return $"Day 1 of Christmas: Part 1: {GetCaptchaSolution()} and part 2: {GetCaptchaHalfwayAroundSolution()}";
         }
     }
 }

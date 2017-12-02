@@ -53,5 +53,56 @@ namespace AdventOfCodeTests
 
             Assert.Equal("9", result);
         }
+
+        // 1212 produces 6: the list contains 4 items, and all four digits match the digit 2 items ahead.
+        [Fact]
+        public void _1212SumOf6Test()
+        {
+            var day1 = new Day1("1212");
+
+            var result = day1.GetCaptchaHalfwayAroundSolution();
+
+            Assert.Equal("6", result);
+        }
+        // 1221 produces 0, because every comparison is between a 1 and a 2.
+        [Fact]
+        public void _1221SumOfZeroTest()
+        {
+            var day1 = new Day1("1221");
+
+            var result = day1.GetCaptchaHalfwayAroundSolution();
+
+            Assert.Equal("0", result);
+        }
+        // 123425 produces 4, because both 2s match each other, but no other digit has a match.
+        [Fact]
+        public void _123425SumOf4Test()
+        {
+            var day1 = new Day1("123425");
+
+            var result = day1.GetCaptchaHalfwayAroundSolution();
+
+            Assert.Equal("4", result);
+        }
+        // 123123 produces 12.
+        [Fact]
+        public void _123123SumOf12Test()
+        {
+            var day1 = new Day1("123123");
+
+            var result = day1.GetCaptchaHalfwayAroundSolution();
+
+            Assert.Equal("12", result);
+        }
+        // 12131415 produces 4.
+        [Fact]
+        public void _12131415SumOf4Test()
+        {
+            var day1 = new Day1("12131415");
+
+            var result = day1.GetCaptchaHalfwayAroundSolution();
+
+            Assert.Equal("4", result);
+        }
     }
 }
